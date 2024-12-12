@@ -7,19 +7,20 @@
 <body>
 	<div align="center">
 		<h1>Registration Form</h1>
-		<h3 th:text="${success}"></h3>
+		<h3 th:text="${success}" style="color:green"></h3>
+		<h3 th:text=${errors} style="color:red"></h3>
 		<form action="/register" method="post" th:object="${student}">
 			Name: <input type="text" name="name" th:field="*{name}"> 
 			<span th:errors="*{name}"></span>
 		    <br><br>
 			Email: <input type="email" name="email" th:field="*{email}">
-		    <span th:error="*{email}"></span>
+		    <span th:errors="*{email}"></span>
 			<br><br>
 			Password: <input type="text" name="password" th:field="*{password}">
-			<span th:error="*{password}"></span>
+			<span th:errors="*{password}"></span>
 			<br><br>
 			Confirm Password: <input type="text" name="confirmPassword" th:field="*{confirmPassword}">
-			<span th:error="*{confirmPassword}"></span>
+			<span th:errors="*{confirmPassword}"></span>
 			<br><br>
 			<button>Register</button>
 		</form>
