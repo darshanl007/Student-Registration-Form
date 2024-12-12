@@ -18,10 +18,10 @@ public class StudentService {
 	public String register(@Valid Student student, BindingResult result, ModelMap map) {
 		if (!student.getPassword().equals(student.getConfirmPassword()))
 			result.rejectValue("confirmPassword", "error.confirmPassword",
-					"Password and Confirm Password does not match");
+					"*Password and Confirm Password does not match");
 
 		if (repository.existsByEmail(student.getEmail()))
-			result.rejectValue("email", "error.email", "Email already exists");
+			result.rejectValue("email", "error.email", "*Email already exists");
 
 		if (result.hasErrors())
 			return "register.html";

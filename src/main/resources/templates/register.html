@@ -8,7 +8,6 @@
 	<div align="center">
 		<h1>Registration Form</h1>
 		<h3 th:text="${success}" style="color:green"></h3>
-		<h3 th:text=${errors} style="color:red"></h3>
 		<form action="/register" method="post" th:object="${student}">
 			Name: <input type="text" name="name" th:field="*{name}"> 
 			<span th:errors="*{name}"></span>
