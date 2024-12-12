@@ -17,14 +17,14 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Size(min = 3, max = 15, message = "Name should be between 3 to 15 characters")
+	@Size(min = 3, max = 15, message = "*Name should be between 3 to 15 characters")
 	private String name;
-	@NotEmpty(message = "Email is Required")
-	@Email(message = "Invalid Email Format")
+	@NotEmpty(message = "*Email is required")
+	@Email(message = "*Invalid email format")
 	private String email;
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "*Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
 	private String password;
 	@Transient
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "*Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
 	private String confirmPassword;
 }
