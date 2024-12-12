@@ -1,6 +1,7 @@
 package org.dars.registration_form.service;
 
 import org.dars.registration_form.dto.Student;
+import org.dars.registration_form.helper.EmailHelper;
 import org.dars.registration_form.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,10 @@ public class StudentService {
 
 	@Autowired
 	StudentRepository repository;
+	
+	
+	@Autowired
+	EmailHelper emailHelper;
 
 	public String register(@Valid Student student, BindingResult result, ModelMap map) {
 		if (!student.getPassword().equals(student.getConfirmPassword()))
@@ -29,6 +34,7 @@ public class StudentService {
 		else {
 			repository.save(student);
 			map.put("success", "Registered Successdully");
+			emailHelper.sendEmail(student);
 			return "register.html";
 		}
 	}
