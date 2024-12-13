@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#rzp-button1 {
+	background-color: #F29F58; /* Razorpay theme color */
+	color: white;
+	font-size: 16px;
+	padding: 12px 30px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+#rzp-button1:hover {
+	background-color: #e6892e;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#rzp-button1:active {
+	background-color: #d67a29;
+	transform: translateY(0);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+</style>
+</head>
+<body>
+	<button id="rzp-button1" align="center">Pay with Razorpay</button>
+
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script th:inline="javascript">
+    var options = {
+      "key": /*[[${key}]]*/, 
+      "amount": "[[${amount}]]", 
+      "currency": "INR",
+      "name": "My APP",
+      "description": "Test Transaction",
+      "image": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg",
+      "order_id": /*[[${orderId}]]*/, 
+      "callback_url": "/success",
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#F29F58"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+    }
+  </script>
+</body>
+</html>
